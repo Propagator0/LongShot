@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "LongShot",
+  "version": "0.1.0",
+  "description": "Whole-page screenshots in one click, or drag a rail down the page and hold still to shoot.",
+  "minimum_chrome_version": "118",
+  "permissions": ["activeTab", "scripting", "debugger", "downloads", "storage", "offscreen"],
+  "background": { "service_worker": "sw.js", "type": "module" },
+  "action": {
+    "default_title": "LongShot",
+    "default_popup": "popup/popup.html",
+    "default_icon": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" }
+  },
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "commands": {
+    "shoot-page":    { "suggested_key": { "default": "Alt+Shift+F" }, "description": "Capture the entire page" },
+    "shoot-rail":    { "suggested_key": { "default": "Alt+Shift+R" }, "description": "Open or close the rail" },
+    "shoot-visible": { "suggested_key": { "default": "Alt+Shift+V" }, "description": "Capture the visible area" }
+  }
+}

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LongShot</title>
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.js"></script>
+</head>
+<body>
+  <header>
+    <h1>LongShot</h1>
+    <div class="bars" aria-hidden="true">
+      <i style="--c:#9B0D1F"></i><i style="--c:#0E9F4B"></i><i style="--c:#1336C9"></i><i style="--c:#11B7E8"></i><i style="--c:#F2D500"></i><i style="--c:#C4168F"></i>
+      <b></b>
+      <i style="--c:#222"></i><i style="--c:#444"></i><i style="--c:#666"></i><i style="--c:#888"></i><i style="--c:#AAA"></i><i style="--c:#CCC"></i><i style="--c:#EEE"></i>
+    </div>
+  </header>
+
+  <main class="frame">
+    <p class="notice" id="notice" hidden>
+      <svg viewBox="0 0 14 12" aria-hidden="true"><path d="M7 1 L13 11 L1 11 Z"/></svg>
+      <span>Browser pages and the Web Store can't be captured. Switch to a website tab.</span>
+    </p>
+    <button class="mode" data-mode="page">
+      <span class="key">F</span>
+      <span class="name">Entire page</span>
+      <span class="desc">Top to bottom, one file</span>
+      <kbd data-cmd="shoot-page"></kbd>
+    </button>
+    <button class="mode" data-mode="rail">
+      <span class="key">R</span>
+      <span class="name">Rail</span>
+      <span class="desc">Drag the edge down, hold still to shoot</span>
+      <kbd data-cmd="shoot-rail"></kbd>
+    </button>
+    <button class="mode" data-mode="visible">
+      <span class="key">V</span>
+      <span class="name">Visible area</span>
+      <span class="desc">Only what's on screen</span>
+      <kbd data-cmd="shoot-visible"></kbd>
+    </button>
+  </main>
+
+  <section class="format">
+    <div class="seg" role="radiogroup" aria-label="Image format">
+      <label><input type="radio" name="format" value="png"><span>PNG</span></label>
+      <label><input type="radio" name="format" value="jpeg"><span>JPEG</span></label>
+      <label><input type="radio" name="format" value="webp"><span>WebP</span></label>
+    </div>
+    <label class="quality" id="qualityRow">
+      <span>Quality</span>
+      <input type="range" id="quality" min="50" max="100" step="1">
+      <output id="qualityOut"></output>
+    </label>
+  </section>
+
+  <details>
+    <summary>Settings</summary>
+    <div class="set">
+      <div class="field">
+        <span class="label">Method</span>
+        <div class="seg small" role="radiogroup" aria-label="Capture method">
+          <label><input type="radio" name="method" value="render"><span>Render</span></label>
+          <label><input type="radio" name="method" value="stitch"><span>Stitch</span></label>
+        </div>
+        <p class="explain" id="methodExplain"></p>
+      </div>
+
+      <div class="field">
+        <span class="label">Resolution</span>
+        <div class="seg small" role="radiogroup" aria-label="Resolution">
+          <label><input type="radio" name="resolution" value="native"><span id="nativeLabel">Screen</span></label>
+          <label><input type="radio" name="resolution" value="1x"><span>1×</span></label>
+        </div>
+      </div>
+
+      <label class="check"><input type="checkbox" id="preload"><span>Load lazy images before a whole-page shot</span></label>
+
+      <label class="slider">
+        <span class="label">Rail: hold still for</span>
+        <input type="range" id="dwell" min="400" max="3000" step="100">
+        <output id="dwellOut"></output>
+      </label>
+
+      <label class="slider">
+        <span class="label">Rail opacity at rest</span>
+        <input type="range" id="opacity" min="15" max="100" step="5">
+        <output id="opacityOut"></output>
+      </label>
+
+      <label class="check"><input type="checkbox" id="saveAs"><span>Ask where to save each file</span></label>
+
+      <label class="text">
+        <span class="label">Folder inside Downloads</span>
+        <input type="text" id="folder" spellcheck="false" placeholder="Leave empty to save directly">
+      </label>
+    </div>
+  </details>
+
+  <footer>
+    <button id="shortcuts" class="link">Change shortcuts</button>
+    <span class="tri" aria-hidden="true"><svg viewBox="0 0 54 16"><path d="M1 15 L8 1 L15 15 Z" class="o"/><path d="M20 15 L27 1 L34 15 Z"/><path d="M39 15 L46 1 L53 15 Z"/></svg></span>
+  </footer>
+</body>
+</html>
